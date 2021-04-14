@@ -1,0 +1,34 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+
+
+	<h1>Order Information </h1>
+	<hr>
+	{% from "includes/_formhelpers.html" import render_field %}
+	<form method="POST" action=" ">
+		<div class="form-inline text-center ">
+			{{ render_field(form.search_order, class="form-control") }}
+			<input class="btn btn-primary" type="submit" value="Submit" >
+		</div>
+		
+	</form>
+	<br><br>
+
+	<table class="table table-striped">
+		<tr>
+			<th>Order No</th>
+			<th>Item Name</th>
+			<th>quantity</th>
+			<th>Weight (kg)</th>
+			{% for orders in order_infor %}
+				<tr>
+					<td>{{orders.Order_No}}</td>
+					<td>{{orders.Item_Name}}</td>
+					<td>{{orders.Quantity}}</td>
+					<td>{{orders.Weight}}</td>
+				</tr>
+			{% endfor %}
+		</tr>
+	</table>
+{% endblock %}

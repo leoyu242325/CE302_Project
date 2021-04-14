@@ -1,0 +1,25 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand"><img src= "https://static.wixstatic.com/media/229858_2b1d6b9cfc8a472fa37fe5d9c7b0cf04~mv2.png/v1/fill/w_560,h_138,al_c,q_85,usm_0.66_1.00_0.01/Asset%202.webp" width="180px" /></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="../false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        {% if session.logged_in %}
+          <li class="nav-item">
+            <a class="nav-link" href="/order_retailer">Orders</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/delivery_retailer">Delivery Information</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/logout" style = "color:#91cf36">Log Out</a>
+          </li>
+
+        {% endif %}
+      </ul>
+
+    </div>
+  </div>
+</nav>

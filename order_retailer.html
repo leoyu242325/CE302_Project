@@ -1,0 +1,72 @@
+{% extends 'layout_retailer.html' %}
+
+{% block head %}
+<style type="text/css">
+	
+td{
+	padding: 1px; 
+	word-wrap:break-word; 
+	font-size: 90%
+}
+
+</style>
+{% endblock %}
+
+{% block body %}
+	<h1>Order Information </h1>
+
+	<hr>
+	{% from "includes/_formhelpers.html" import render_field %}
+	<form method="POST" action=" ">
+		<div class="form-inline text-center ">
+			{{ render_field(form.search_order, class="form-control") }}
+			<input class="btn btn-primary" type="submit" value="Submit" >
+		</div>
+		
+	</form>
+	<br><br>
+
+	<table class="table table-striped" style="width:100%; table-layout: fixed">
+		<tr>
+			<th>Order No</th>
+			<th>Date</th>
+			<th>Customer ID</th>
+			<th>Name</th>
+			<th>Phone Number</th>
+			<th>E-mail Address</th>
+			<th>Address</th>
+			<th>Order Item No</th>
+			<th>Type</th>
+			<th>Item Name</th>
+			<th>Quantity</th>
+			<th>Price (HKD)</th>
+			<th>Weight</th>
+			<th>Edit</th>
+			<th>Delete</th>
+				{% for order_form in order_infor %}
+				<tr>
+					<td>{{order_form.Order_No}}</td>
+					<td>{{order_form.Date}}</td>
+					<td>{{order_form.Customer_ID}}</td>
+					<td>{{order_form.Name}}</td>
+					<td>{{order_form.Phone_Number}}</td>
+					<td>{{order_form.Email}}</td>
+					<td>{{order_form.Address}}</td>
+					<td>{{order_form.order_item_no}}</td>
+					<td>{{order_form.Type}}</td>
+					<td>{{order_form.Item_Name}}</td>
+					<td>{{order_form.Quantity}}</td>
+					<td>{{order_form.Price}}</td>
+					<td>{{order_form.Weight}}</td>
+					<td><a href = "edit_order_retailer/{{order_form.order_item_no}}" class="btn btn-success pullright">Edit</a></td>
+					<td>
+						<form action = "{{url_for('delete_order_retailer', order_item_no = order_form.order_item_no)}}" method="post">
+							<input type="hidden" name="_method" value="DELETE">
+							<input type="submit" value="Delete"class="btn btn-danger">
+						</form>
+					</td>
+				</tr>
+				{% endfor %}
+		</tr>
+	</table>
+{% endblock %}

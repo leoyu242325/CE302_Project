@@ -1,0 +1,33 @@
+{% extends 'layout_retailer.html' %}
+
+{% block body %}
+	<h1>Delivery Information </h1>
+	
+	<hr>
+	{% from "includes/_formhelpers.html" import render_field %}
+	<form method="POST" action=" ">
+		<div class="form-inline text-center ">
+			{{ render_field(form.search_tracking, class="form-control") }}
+			<input class="btn btn-primary" type="submit" value="Submit" >
+		</div>
+		
+	</form>
+	<br><br>
+
+	<table class="table table-striped">
+		<tr>
+			<th>Order No</th>
+			<th>Tracking No</th>
+			<th>Delivery Price</th>
+			<th>Estimated Delivery Date</th>
+				{% for retailer in delivery_infor %}
+				<tr>
+					<td>{{retailer.Order_No}}</td>
+					<td>{{retailer.tracking_no}}</td>
+					<td>{{retailer.delivery_price}}</td>
+					<td data-type ="date">{{retailer.estimated_date}}</td>
+				</tr>
+				{% endfor %}
+		</tr>
+	</table>
+{% endblock %}

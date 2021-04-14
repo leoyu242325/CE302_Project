@@ -1,0 +1,18 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+	<h1>Edit delivery</h1> <hr>
+	<p>Tracking Number : <b>{{ delivery_infor.tracking_no }}</b></p>
+	<p>Order Item Number : <b>{{ delivery_infor.order_item_no }}</b></p>
+	<br>
+	{% from "includes/_formhelpers.html" import render_field %}
+	<form method="POST" action=" ">
+		<div class="form-group">
+			{{ render_field(form.Delivery_Price, class="form-control") }}
+		</div>
+		<div class="form-group">
+			{{ render_field(form.Estimated_Date, class="form-control") }}
+		</div>
+		<p><input class="btn btn-primary" type="submit" value="Submit"></p>
+	</form>
+{% endblock %}
